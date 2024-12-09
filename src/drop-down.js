@@ -1,28 +1,42 @@
-import './drop-down.css'
+import "./drop-down.css";
 
-export default function MakeDropDown(button, list) {
-    if (!(button || list)) {
-        return;        
-    }
+let windowEventListenerInitiated = false;
 
-    button.classList.add("drop-down__button");
-    list.classList.add("drop-down__list");
+export function MakeDropDownHover(button, list) {
+  if (!(button || list)) {
+    return;
+  }
 
+  button.classList.add("drop-down-hover__button");
+  list.classList.add("drop-down-hover__list");
 }
 
-/*     const xList = document.createElement("div")
-    xList = list
+export function MakeDropDownClick(button = document.createElement("div"), list = document.createElement("div")) {
+  if (!(button || list)) {
+    return;
+  }
 
-    window.addEventListener
+  hideList();
 
-    button.addeventlistener("mouseup", showList)
+  button.classList.add("drop-down-click__button");
+  list.classList.add("drop-down-click__list");
 
-    function showList(){
-        xList.style.display = "flex"
-        xList.style.flexDirection = "column"
-    }
+  if (!windowEventListenerInitiated) {
+    window.addEventListener("mousedown", (event) => hideList(event));
+    windowEventListenerInitiated = true;
+  }
 
-    function hideList(){
-        list.style.display = "none"
-    } */
+  button.addEventListener("mouseup", showList);
 
+  function showList() {
+    console.log("showing list")
+    list.classList.remove("hide")
+    list.classList.add("show")
+  }
+
+  function hideList(event) {
+    list.classList.remove("show")
+    list.classList.add("hide")
+    
+  }
+}
