@@ -27,11 +27,11 @@
   flex-direction: column;
 }
 
-.show {
+.list-show {
   display: flex;
   flex-direction: column;
 }
 
-.hide {
+.list-hide {
   display: none;
 }
