@@ -21,7 +21,7 @@ export function clickable(
   if (!(button || list)) {
     return;
   }
-  hideList();
+  //hideList();
 
   button.classList.add("drop-down-click__button");
   button.classList.add("button-hide");
@@ -44,18 +44,47 @@ export function clickable(
   }
 
   function hideList() {
-    if (!list.classList.contains("list-show")) {
+    /*     if (!list.classList.contains("list-show")) {
       return;
     }
     console.log("hiding list");
     list.classList.remove("list-show");
     list.classList.add("list-hide");
     button.classList.remove("button-show");
-    button.classList.add("button-hide");
+    button.classList.add("button-hide"); */
+
+    console.log("hiding list");
+    const openList = document.querySelector(".list-show");
+    if (openList) {
+      openList.classList.remove("list-show");
+      openList.classList.add("list-hide");
+    }
+    console.log(openList);
+    const openButton = document.querySelector(".button-show");
+    if (openButton) {
+      openButton.classList.remove("button-show");
+      openButton.classList.add("button-hide");
+    }
   }
 
+  /*   function hideListAll() {
+    console.log("hiding all lists");
+    const allLists = document.querySelectorAll(".list-show");
+    allLists.forEach((list) => {
+      list.classList.remove("list-show");
+      list.classList.add("list-hide");
+    });
+  } */
+
   function toggleListVisibility() {
-    list.classList.contains("list-hide") ? showList() : hideList();
+    //list.classList.contains("list-hide") ? showList() : hideList();
+
+    if (list.classList.contains("list-hide")) {
+      hideList();
+      showList();
+    } else {
+      hideList();
+    }
   }
 
   function checkClick(target) {
