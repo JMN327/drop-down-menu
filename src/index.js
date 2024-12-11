@@ -17,6 +17,9 @@ const button3 = document.querySelector(".item3");
 const list3 = document.querySelector(".list3");
 const button4 = document.querySelector(".item4");
 const list4 = document.querySelector(".list4");
+const button5 = document.querySelector(".item5");
+const list5 = document.querySelector(".list5");
 
 MakeDropDown.clickable(button3, list3);
 MakeDropDown.clickable(button4, list4);
+MakeDropDown.clickable(button5, list5);

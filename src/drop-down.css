@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .drop-down-hover__button {
   position: relative;
 }
@@ -6,7 +10,7 @@
   display: none;
   position: absolute;
   top: calc(100% + 0rem);
-  left: 0;
+  left: -0.25rem;
   z-index: 1;
 }
 
@@ -18,7 +22,7 @@
   display: none;
   position: absolute;
   top: calc(100% + 0rem);
-  left: 0;
+  left: 0.25;
   z-index: 1;
 }
 
