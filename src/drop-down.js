@@ -1,9 +1,6 @@
 import "./drop-down.css";
 
-export default function makeDropDown(button, list) {
-
-    
-
+export default function dropdown(button, list) {
   const hoverable = () => {
     if (!(button || list)) {
       return;
@@ -11,9 +8,7 @@ export default function makeDropDown(button, list) {
 
     button.classList.add("drop-down-hover__button");
     list.classList.add("drop-down-hover__list");
-
-    handleListClicks(list);
-  }
+  };
 
   const clickable = () => {
     if (!(button || list)) {
@@ -72,28 +67,19 @@ export default function makeDropDown(button, list) {
         hideList();
       }
     }
+  };
 
-    handleListClicks(list);
+
+  function addFunctionToListItem(behaviorFunction, listItemIndex) {
+    if (!listItemIndex && listItemIndex !== 0) {
+      return;
+    }
+    if (!behaviorFunction) {
+      return;
+    }
+    const listItem = list.children.item(listItemIndex);
+    listItem.addEventListener("mouseup", behaviorFunction)
   }
 
-  function handleListClicks(list) {
-    const ItemArray = Array.from(list.children);
-
-    ItemArray.forEach((item) => {
-      item.classList.add("drop-down-list__item");
-    });
-
-    list.addEventListener("mouseup", (event) => {
-      const clickedItem = event.target.closest(".drop-down-list__item");
-      const listClickEvent = new CustomEvent("listClick", {
-        detail: {
-          text: clickedItem.textContent,
-          index: ItemArray.indexOf(clickedItem) + 1,
-        },
-      });
-      return list.dispatchEvent(listClickEvent);
-    });
-  }
-
-  return { hoverable, clickable };
+  return { hoverable, clickable, addFunctionToListItem };
 }
