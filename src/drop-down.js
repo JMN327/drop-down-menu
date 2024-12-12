@@ -11,7 +11,7 @@ export function hoverable(
   button.classList.add("drop-down-hover__button");
   list.classList.add("drop-down-hover__list");
 
-  handleListClicks();
+  handleListClicks(list);
 }
 
 export function clickable(
@@ -21,7 +21,6 @@ export function clickable(
   if (!(button || list)) {
     return;
   }
-  //hideList();
 
   button.classList.add("drop-down-click__button");
   button.classList.add("button-hide");
@@ -44,22 +43,12 @@ export function clickable(
   }
 
   function hideList() {
-    /*     if (!list.classList.contains("list-show")) {
-      return;
-    }
-    console.log("hiding list");
-    list.classList.remove("list-show");
-    list.classList.add("list-hide");
-    button.classList.remove("button-show");
-    button.classList.add("button-hide"); */
-
     console.log("hiding list");
     const openList = document.querySelector(".list-show");
     if (openList) {
       openList.classList.remove("list-show");
       openList.classList.add("list-hide");
     }
-    console.log(openList);
     const openButton = document.querySelector(".button-show");
     if (openButton) {
       openButton.classList.remove("button-show");
@@ -67,18 +56,7 @@ export function clickable(
     }
   }
 
-  /*   function hideListAll() {
-    console.log("hiding all lists");
-    const allLists = document.querySelectorAll(".list-show");
-    allLists.forEach((list) => {
-      list.classList.remove("list-show");
-      list.classList.add("list-hide");
-    });
-  } */
-
   function toggleListVisibility() {
-    //list.classList.contains("list-hide") ? showList() : hideList();
-
     if (list.classList.contains("list-hide")) {
       hideList();
       showList();
@@ -97,7 +75,24 @@ export function clickable(
     }
   }
 
-  handleListClicks();
+  handleListClicks(list);
 }
 
-function handleListClicks() {}
+function handleListClicks(list) {
+  const ItemArray = Array.from(list.children);
+
+  ItemArray.forEach((item) => {
+    item.classList.add("drop-down-list__item");
+  });
+
+  list.addEventListener("mouseup", (event) => {
+    const clickedItem = event.target.closest(".drop-down-list__item");
+    const listClickEvent = new CustomEvent("listClick", {
+      detail: {
+        text: clickedItem.textContent,
+        index: ItemArray.indexOf(clickedItem) + 1,
+      },
+    });
+    return list.dispatchEvent(listClickEvent);
+  });
+}

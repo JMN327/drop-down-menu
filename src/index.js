@@ -20,6 +20,11 @@ const list4 = document.querySelector(".list4");
 const button5 = document.querySelector(".item5");
 const list5 = document.querySelector(".list5");
 
-MakeDropDown.clickable(button3, list3);
+let hmm = MakeDropDown.clickable(button3, list3);
+list3.addEventListener("listClick", (event)=>{console.log(event.detail.text, event.detail.index)})
 MakeDropDown.clickable(button4, list4);
+list4.addEventListener("listClick", (event)=>{console.log(event.detail.text, event.detail.index)})
 MakeDropDown.clickable(button5, list5);
+list5.addEventListener("listClick", (event)=>{console.log(event.detail.text, event.detail.index)})
+
+console.log(hmm)
