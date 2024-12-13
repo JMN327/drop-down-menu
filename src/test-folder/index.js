@@ -1,9 +1,6 @@
-import "./styles.css";
-import storageAvailable from "./local-storage.js";
-import dropdown from "./drop-down-package/drop-down.js"
+import dropdown from "./drop-down.js";
 
 console.log("Hello World!)");
-console.log(`Storage available: ${storageAvailable("localStorage")}`);
 
 const button1 = document.querySelector(".item1");
 const list1 = document.querySelector(".list1");
