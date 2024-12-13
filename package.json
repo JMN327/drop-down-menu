@@ -1,4 +1,11 @@
 {
+  "name": "drop-down",
+  "version": "1.0.0",
+  "description": "drop down navbar functionality",
+  "author": "JMN327",
+  "license": "ISC",
+
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "getWebpack": "npm install --save-dev webpack webpack-cli",
