@@ -12,7 +12,7 @@ const list2 = document.querySelector(".list2");
 
 const a = dropdown(button1, list1);
 a.hoverable();
-a.addFunctionToListItem(() => console.log("hello Worldy world world"), 0);
+a.addFunctionToListItem(() => console.log("hello Worldy world world"), 2);
 list1.addEventListener("listClick", (event) => {
   console.log(event.detail.text, event.detail.index);
 });

@@ -69,7 +69,6 @@ export default function dropdown(button, list) {
     }
   };
 
-
   function addFunctionToListItem(behaviorFunction, listItemIndex) {
     if (!listItemIndex && listItemIndex !== 0) {
       return;
@@ -78,7 +77,10 @@ export default function dropdown(button, list) {
       return;
     }
     const listItem = list.children.item(listItemIndex);
-    listItem.addEventListener("mouseup", behaviorFunction)
+    if (!listItem) {
+      return;
+    }
+    listItem.addEventListener("mouseup", behaviorFunction);
   }
 
   return { hoverable, clickable, addFunctionToListItem };
